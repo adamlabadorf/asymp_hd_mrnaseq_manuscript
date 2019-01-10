@@ -1,0 +1,529 @@
+
+@ARTICLE{Benjamini1995-ok,
+  title   = "Controlling the false discovery rate: a practical and powerful
+             approach to multiple testing",
+  author  = "Benjamini, Yoav and Hochberg, Yosef",
+  journal = "J. R. Stat. Soc. Series B Stat. Methodol.",
+  volume  =  57,
+  number  =  1,
+  pages   = "289--300",
+  year    =  1995
+}
+
+@ARTICLE{Labadorf2017-qb,
+  title    = "Evidence for a Pan-neurodegenerative Disease Response in
+              Huntington and Parkinson Disease Expression Profiles",
+  author   = "Labadorf, Adam and Choi, Seung-Hoan and Myers, Richard",
+  abstract = "Huntington's and Parkinson's Diseases (HD and PD) are
+              neurodegenerative disorders that share some pathological features
+              but are disparate in others. For example, while both diseases are
+              marked by aberrant protein aggregation in the brain, the specific
+              proteins that aggregate and types of neurons affected differ. A
+              better understanding of the molecular similarities and
+              differences between these two diseases may lead to a more
+              complete mechanistic picture of both the individual diseases and
+              the neurodegenerative process in general. We sought to
+              characterize the common transcriptional signature of HD and PD as
+              well as genes uniquely implicated in each of these diseases using
+              mRNA-Seq data from post mortem human brains in comparison to
+              neuropathologically normal controls. The enriched biological
+              pathways implicated by HD differentially expressed genes show
+              remarkable consistency with those for PD differentially expressed
+              genes and implicate the common biological processes of
+              neuroinflammation, apoptosis, transcriptional dysregulation, and
+              neuron-associated functions. Comparison of the differentially
+              expressed (DE) genes highlights a set of consistently altered
+              genes that span both diseases. In particular, processes involving
+              nuclear factor kappa-light-chain-enhancer of activated B cells
+              (NFkB) and transcription factor cAMP response element-binding
+              protein (CREB) are the most prominent among the genes common to
+              HD and PD. When the combined HD and PD data are compared to
+              controls, relatively few additional biological processes emerge
+              as significantly enriched suggesting that most pathways are
+              independently seen within each disorder. Despite showing
+              comparable numbers of DE genes, DE genes unique to HD are
+              enriched in far more coherent biological processes than the DE
+              genes unique to PD, suggesting that PD may represent a more
+              heterogeneous disorder. The complexity of the biological
+              processes implicated by this analysis provides impetus for the
+              development of better experimental models to validate the
+              results.",
+  journal  = "Front. Mol. Neurosci.",
+  volume   =  10,
+  pages    = "430",
+  year     =  2017
+}
+
+
+@ARTICLE{Choi2017-bb,
+  title    = "Evaluation of logistic regression models and effect of covariates
+              for case-control study in {RNA-Seq} analysis",
+  author   = "Choi, Seung Hoan and Labadorf, Adam T and Myers, Richard H and
+              Lunetta, Kathryn L and Dupuis, Jos{\'e}e and DeStefano, Anita L",
+  abstract = "BACKGROUND: Next generation sequencing provides a count of RNA
+              molecules in the form of short reads, yielding discrete, often
+              highly non-normally distributed gene expression measurements.
+              Although Negative Binomial (NB) regression has been generally
+              accepted in the analysis of RNA sequencing (RNA-Seq) data, its
+              appropriateness has not been exhaustively evaluated. We explore
+              logistic regression as an alternative method for RNA-Seq studies
+              designed to compare cases and controls, where disease status is
+              modeled as a function of RNA-Seq reads using simulated and
+              Huntington disease data. We evaluate the effect of adjusting for
+              covariates that have an unknown relationship with gene
+              expression. Finally, we incorporate the data adaptive method in
+              order to compare false positive rates. RESULTS: When the sample
+              size is small or the expression levels of a gene are highly
+              dispersed, the NB regression shows inflated Type-I error rates
+              but the Classical logistic and Bayes logistic (BL) regressions
+              are conservative. Firth's logistic (FL) regression performs well
+              or is slightly conservative. Large sample size and low dispersion
+              generally make Type-I error rates of all methods close to nominal
+              alpha levels of 0.05 and 0.01. However, Type-I error rates are
+              controlled after applying the data adaptive method. The NB, BL,
+              and FL regressions gain increased power with large sample size,
+              large log2 fold-change, and low dispersion. The FL regression has
+              comparable power to NB regression. CONCLUSIONS: We conclude that
+              implementing the data adaptive method appropriately controls
+              Type-I error rates in RNA-Seq analysis. Firth's logistic
+              regression provides a concise statistical inference process and
+              reduces spurious associations from inaccurately estimated
+              dispersion parameters in the negative binomial framework.",
+  journal  = "BMC Bioinformatics",
+  volume   =  18,
+  number   =  1,
+  pages    = "91",
+  month    =  feb,
+  year     =  2017,
+  keywords = "Covariate effect; Firth's logistic regression; Negative binomial
+              regression; RNA-Sequencing analysis",
+  language = "en"
+}
+
+@ARTICLE{Harrow2012-fr,
+  title    = "{GENCODE}: The reference human genome annotation for The {ENCODE}
+              Project",
+  author   = "Harrow, Jennifer and Frankish, Adam and Gonzalez, Jose M and
+              Tapanari, Electra and Diekhans, Mark and Kokocinski, Felix and
+              Aken, Bronwen L and Barrell, Daniel and Zadissa, Amonida and
+              Searle, Stephen and Barnes, If and Bignell, Alexandra and
+              Boychenko, Veronika and Hunt, Toby and Kay, Mike and Mukherjee,
+              Gaurab and Rajan, Jeena and Despacio-Reyes, Gloria and Saunders,
+              Gary and Steward, Charles and Harte, Rachel and Lin, Michael and
+              Howald, C{\'e}dric and Tanzer, Andrea and Derrien, Thomas and
+              Chrast, Jacqueline and Walters, Nathalie and Balasubramanian,
+              Suganthi and Pei, Baikang and Tress, Michael and Rodriguez, Jose
+              Manuel and Ezkurdia, Iakes and Baren, Jeltje van and Brent,
+              Michael and Haussler, David and Kellis, Manolis and Valencia,
+              Alfonso and Reymond, Alexandre and Gerstein, Mark and Guig{\'o},
+              Roderic and Hubbard, Tim J",
+  abstract = "The GENCODE Consortium aims to identify all gene features in the
+              human genome using a combination of computational analysis,
+              manual annotation, and experimental validation. Since the first
+              public release of this annotation data set, few new
+              protein-coding loci have been added, yet the number of
+              alternative splicing transcripts annotated has steadily
+              increased. The GENCODE 7 release contains 20,687 protein-coding
+              and 9640 long noncoding RNA loci and has 33,977 coding
+              transcripts not represented in UCSC genes and RefSeq. It also has
+              the most comprehensive annotation of long noncoding RNA (lncRNA)
+              loci publicly available with the predominant transcript form
+              consisting of two exons. We have examined the completeness of the
+              transcript annotation and found that 35\% of transcriptional
+              start sites are supported by CAGE clusters and 62\% of
+              protein-coding genes have annotated polyA sites. Over one-third
+              of GENCODE protein-coding genes are supported by peptide hits
+              derived from mass spectrometry spectra submitted to Peptide
+              Atlas. New models derived from the Illumina Body Map 2.0 RNA-seq
+              data identify 3689 new loci not currently in GENCODE, of which
+              3127 consist of two exon models indicating that they are possibly
+              unannotated long noncoding loci. GENCODE 7 is publicly available
+              from gencodegenes.org and via the Ensembl and UCSC Genome
+              Browsers.",
+  journal  = "Genome Res.",
+  volume   =  22,
+  number   =  9,
+  pages    = "1760--1774",
+  month    =  sep,
+  year     =  2012,
+  language = "en"
+}
+
+@ARTICLE{Love2014-nu,
+  title    = "Moderated estimation of fold change and dispersion for {RNA-Seq}
+              data with {DESeq2}",
+  author   = "Love, Michael I and Huber, Wolfgang and Anders, Simon",
+  abstract = "In comparative high-throughput sequencing assays, a fundamental
+              task is the analysis of count data, such as read counts per gene
+              in RNA-Seq data, for evidence of systematic changes across
+              experimental conditions. Small replicate numbers, discreteness,
+              large dynamic range and the presence of outliers require a
+              suitable statistical approach. We present DESeq2, a method for
+              differential analysis of count data. DESeq2 uses shrinkage
+              estimation for dispersions and fold changes to improve stability
+              and interpretability of the estimates. This enables a more
+              quantitative analysis focused on the strength rather than the
+              mere presence of differential expression and facilitates
+              downstream tasks such as gene ranking and visualization. DESeq2
+              is available as an R/Bioconductor package.",
+  journal  = "bioRxiv",
+  pages    = "002832",
+  month    =  may,
+  year     =  2014,
+  language = "en"
+}
+
+@MISC{fastqc,
+  title        = "{FastQC}",
+  booktitle    = "Babraham Bioinformatics - {FastQC} A Quality Control tool for
+                  High Throughput Sequence Data",
+  howpublished = "\url{http://www.bioinformatics.babraham.ac.uk/projects/fastqc/}",
+  note         = "Accessed: 2016-9-27"
+}
+
+
+@ARTICLE{Huang2009-sx,
+  title     = "Bioinformatics enrichment tools: paths toward the comprehensive
+               functional analysis of large gene lists",
+  author    = "Huang, Da Wei and Sherman, Brad T and Lempicki, Richard A",
+  abstract  = "Functional analysis of large gene lists, derived in most cases
+               from emerging high-throughput genomic, proteomic and
+               bioinformatics scanning approaches, is still a challenging and
+               daunting task. The gene-annotation enrichment analysis is a
+               promising high-throughput strategy that increases the likelihood
+               for investigators to identify biological processes most
+               pertinent to their study. Approximately 68 bioinformatics
+               enrichment tools that are currently available in the community
+               are collected in this survey. Tools are uniquely categorized
+               into three major classes, according to their underlying
+               enrichment algorithms. The comprehensive collections, unique
+               tool classifications and associated questions/issues will
+               provide a more comprehensive and up-to-date view regarding the
+               advantages, pitfalls and recent trends in a simpler tool-class
+               level rather than by a tool-by-tool approach. Thus, the survey
+               will help tool designers/developers and experienced end users
+               understand the underlying algorithms and pertinent details of
+               particular tool categories/tools, enabling them to make the best
+               choices for their particular research interests.",
+  journal   = "Nucleic Acids Res.",
+  publisher = "academic.oup.com",
+  volume    =  37,
+  number    =  1,
+  pages     = "1--13",
+  month     =  jan,
+  year      =  2009,
+  language  = "en"
+}
+
+@ARTICLE{Huang2009-es,
+  title     = "Systematic and integrative analysis of large gene lists using
+               {DAVID} bioinformatics resources",
+  author    = "Huang, Da Wei and Sherman, Brad T and Lempicki, Richard A",
+  abstract  = "DAVID bioinformatics resources consists of an integrated
+               biological knowledgebase and analytic tools aimed at
+               systematically extracting biological meaning from large
+               gene/protein lists. This protocol explains how to use DAVID, a
+               high-throughput and integrated data-mining environment, to
+               analyze gene lists derived from high-throughput genomic
+               experiments. The procedure first requires uploading a gene list
+               containing any number of common gene identifiers followed by
+               analysis using one or more text and pathway-mining tools such as
+               gene functional classification, functional annotation chart or
+               clustering and functional annotation table. By following this
+               protocol, investigators are able to gain an in-depth
+               understanding of the biological themes in lists of genes that
+               are enriched in genome-scale studies.",
+  journal   = "Nat. Protoc.",
+  publisher = "nature.com",
+  volume    =  4,
+  number    =  1,
+  pages     = "44--57",
+  year      =  2009,
+  language  = "en"
+}
+
+@ARTICLE{Firth1993-nb,
+  title     = "Bias reduction of maximum likelihood estimates",
+  author    = "Firth, David",
+  abstract  = "SUMMARYIt is shown how, in regular parametric problems, the
+               first-order term is removed from the asymptotic bias of maximum
+               likelihood estimates by a suitable modification of the score
+               function. In exponential families with canonical
+               parameterization the effect is to penalize the likelihood by the
+               Jeffreys invariant prior. In binomial logistic models, Poisson
+               log linear models and certain other generalized linear models,
+               the Jeffreys prior penalty function can be imposed in standard
+               regression software using a scheme of iterative adjustments to
+               the data.",
+  journal   = "Biometrika",
+  publisher = "Oxford University Press",
+  volume    =  80,
+  number    =  1,
+  pages     = "27--38",
+  month     =  mar,
+  year      =  1993
+}
+
+@ARTICLE{Carithers2015-vh,
+  title     = "A Novel Approach to {High-Quality} Postmortem Tissue
+               Procurement: The {GTEx} Project",
+  author    = "Carithers, Latarsha J and Ardlie, Kristin and Barcus, Mary and
+               Branton, Philip A and Britton, Angela and Buia, Stephen A and
+               Compton, Carolyn C and DeLuca, David S and Peter-Demchok, Joanne
+               and Gelfand, Ellen T and Guan, Ping and Korzeniewski, Greg E and
+               Lockhart, Nicole C and Rabiner, Chana A and Rao, Abhi K and
+               Robinson, Karna L and Roche, Nancy V and Sawyer, Sherilyn J and
+               Segr{\`e}, Ayellet V and Shive, Charles E and Smith, Anna M and
+               Sobin, Leslie H and Undale, Anita H and Valentino, Kimberly M
+               and Vaught, Jim and Young, Taylor R and Moore, Helen M and {GTEx
+               Consortium}",
+  abstract  = "The Genotype-Tissue Expression (GTEx) project, sponsored by the
+               NIH Common Fund, was established to study the correlation
+               between human genetic variation and tissue-specific gene
+               expression in non-diseased individuals. A significant challenge
+               was the collection of high-quality biospecimens for extensive
+               genomic analyses. Here we describe how a successful
+               infrastructure for biospecimen procurement was developed and
+               implemented by multiple research partners to support the
+               prospective collection, annotation, and distribution of blood,
+               tissues, and cell lines for the GTEx project. Other research
+               projects can follow this model and form beneficial partnerships
+               with rapid autopsy and organ procurement organizations to
+               collect high quality biospecimens and associated clinical data
+               for genomic studies. Biospecimens, clinical and genomic data,
+               and Standard Operating Procedures guiding biospecimen collection
+               for the GTEx project are available to the research community.",
+  journal   = "Biopreserv. Biobank.",
+  publisher = "online.liebertpub.com",
+  volume    =  13,
+  number    =  5,
+  pages     = "311--319",
+  month     =  oct,
+  year      =  2015,
+  language  = "en"
+}
+
+@ARTICLE{Ewels2016-qh,
+  title     = "{MultiQC}: summarize analysis results for multiple tools and
+               samples in a single report",
+  author    = "Ewels, Philip and Magnusson, M{\aa}ns and Lundin, Sverker and
+               K{\"a}ller, Max",
+  abstract  = "MOTIVATION: Fast and accurate quality control is essential for
+               studies involving next-generation sequencing data. Whilst
+               numerous tools exist to quantify QC metrics, there is no common
+               approach to flexibly integrate these across tools and large
+               sample sets. Assessing analysis results across an entire project
+               can be time consuming and error prone; batch effects and outlier
+               samples can easily be missed in the early stages of analysis.
+               RESULTS: We present MultiQC, a tool to create a single report
+               visualising output from multiple tools across many samples,
+               enabling global trends and biases to be quickly identified.
+               MultiQC can plot data from many common bioinformatics tools and
+               is built to allow easy extension and customization. AVAILABILITY
+               AND IMPLEMENTATION: MultiQC is available with an GNU GPLv3
+               license on GitHub, the Python Package Index and Bioconda.
+               Documentation and example reports are available at
+               http://multiqc.info CONTACT: phil.ewels@scilifelab.se.",
+  journal   = "Bioinformatics",
+  publisher = "academic.oup.com",
+  volume    =  32,
+  number    =  19,
+  pages     = "3047--3048",
+  month     =  oct,
+  year      =  2016,
+  language  = "en"
+}
+
+% The entry below contains non-ASCII chars that could not be converted
+% to a LaTeX equivalent.
+@ARTICLE{Patro2015-jg,
+  title     = "Salmon provides accurate, fast, and bias-aware transcript
+               expression estimates using dual-phase inference",
+  author    = "Patro, Rob and Duggal, Geet and Love, Michael I and Irizarry,
+               Rafael A and Kingsford, Carl",
+  abstract  = "We introduce Salmon, a new method for quantifying transcript
+               abundance from RNA-seq reads that is highly-accurate and very
+               fast. Salmon is the first transcriptome-wide quantifier to model
+               and correct for fragment GC content bias, which we demonstrate
+               substantially …",
+  journal   = "Preprint at http://biorxiv. org/content/early/2016/08/30/021592",
+  publisher = "pdfs.semanticscholar.org",
+  year      =  2015
+}
+
+@ARTICLE{Subramanian2005-tj,
+  title     = "Gene set enrichment analysis: a knowledge-based approach for
+               interpreting genome-wide expression profiles",
+  author    = "Subramanian, Aravind and Tamayo, Pablo and Mootha, Vamsi K and
+               Mukherjee, Sayan and Ebert, Benjamin L and Gillette, Michael A
+               and Paulovich, Amanda and Pomeroy, Scott L and Golub, Todd R and
+               Lander, Eric S and Mesirov, Jill P",
+  abstract  = "Although genomewide RNA expression analysis has become a routine
+               tool in biomedical research, extracting biological insight from
+               such information remains a major challenge. Here, we describe a
+               powerful analytical method called Gene Set Enrichment Analysis
+               (GSEA) for interpreting gene expression data. The method derives
+               its power by focusing on gene sets, that is, groups of genes
+               that share common biological function, chromosomal location, or
+               regulation. We demonstrate how GSEA yields insights into several
+               cancer-related data sets, including leukemia and lung cancer.
+               Notably, where single-gene analysis finds little similarity
+               between two independent studies of patient survival in lung
+               cancer, GSEA reveals many biological pathways in common. The
+               GSEA method is embodied in a freely available software package,
+               together with an initial database of 1,325 biologically defined
+               gene sets.",
+  journal   = "Proc. Natl. Acad. Sci. U. S. A.",
+  publisher = "National Acad Sciences",
+  volume    =  102,
+  number    =  43,
+  pages     = "15545--15550",
+  month     =  oct,
+  year      =  2005,
+  language  = "en"
+}
+
+@ARTICLE{Bolger2014-fp,
+  title     = "Trimmomatic: a flexible trimmer for Illumina sequence data",
+  author    = "Bolger, Anthony M and Lohse, Marc and Usadel, Bjoern",
+  abstract  = "MOTIVATION: Although many next-generation sequencing (NGS) read
+               preprocessing tools already existed, we could not find any tool
+               or combination of tools that met our requirements in terms of
+               flexibility, correct handling of paired-end data and high
+               performance. We have developed Trimmomatic as a more flexible
+               and efficient preprocessing tool, which could correctly handle
+               paired-end data. RESULTS: The value of NGS read preprocessing is
+               demonstrated for both reference-based and reference-free tasks.
+               Trimmomatic is shown to produce output that is at least
+               competitive with, and in many cases superior to, that produced
+               by other tools, in all scenarios tested. AVAILABILITY AND
+               IMPLEMENTATION: Trimmomatic is licensed under GPL V3. It is
+               cross-platform (Java 1.5+ required) and available at
+               http://www.usadellab.org/cms/index.php?page=trimmomatic CONTACT:
+               usadel@bio1.rwth-aachen.de SUPPLEMENTARY INFORMATION:
+               Supplementary data are available at Bioinformatics online.",
+  journal   = "Bioinformatics",
+  publisher = "academic.oup.com",
+  volume    =  30,
+  number    =  15,
+  pages     = "2114--2120",
+  month     =  aug,
+  year      =  2014,
+  language  = "en"
+}
+
+@ARTICLE{Labadorf2015-zf,
+  title    = "{RNA} Sequence Analysis of Human Huntington Disease Brain Reveals
+              an Extensive Increase in Inflammatory and Developmental Gene
+              Expression",
+  author   = "Labadorf, Adam and Hoss, Andrew G and Lagomarsino, Valentina and
+              Latourelle, Jeanne C and Hadzi, Tiffany C and Bregu, Joli and
+              MacDonald, Marcy E and Gusella, James F and Chen, Jiang-Fan and
+              Akbarian, Schahram and Weng, Zhiping and Myers, Richard H",
+  abstract = "Huntington's Disease (HD) is a devastating neurodegenerative
+              disorder that is caused by an expanded CAG trinucleotide repeat
+              in the Huntingtin (HTT) gene. Transcriptional dysregulation in
+              the human HD brain has been documented but is incompletely
+              understood. Here we present a genome-wide analysis of mRNA
+              expression in human prefrontal cortex from 20 HD and 49
+              neuropathologically normal controls using next generation
+              high-throughput sequencing. Surprisingly, 19\% (5,480) of the
+              28,087 confidently detected genes are differentially expressed
+              (FDR<0.05) and are predominantly up-regulated. A novel
+              hypothesis-free geneset enrichment method that dissects large
+              gene lists into functionally and transcriptionally related groups
+              discovers that the differentially expressed genes are enriched
+              for immune response, neuroinflammation, and developmental genes.
+              Markers for all major brain cell types are observed, suggesting
+              that HD invokes a systemic response in the brain area studied.
+              Unexpectedly, the most strongly differentially expressed genes
+              are a homeotic gene set (represented by Hox and other homeobox
+              genes), that are almost exclusively expressed in HD, a profile
+              not widely implicated in HD pathogenesis. The significance of
+              transcriptional changes of developmental processes in the HD
+              brain is poorly understood and warrants further investigation.
+              The role of inflammation and the significance of non-neuronal
+              involvement in HD pathogenesis suggest anti-inflammatory
+              therapeutics may offer important opportunities in treating HD.",
+  journal  = "PLoS One",
+  volume   =  10,
+  number   =  12,
+  pages    = "e0143563",
+  month    =  dec,
+  year     =  2015
+}
+
+
+@ARTICLE{Vashishtha2013-su,
+  title    = "Targeting {H3K4} trimethylation in Huntington disease",
+  author   = "Vashishtha, Malini and Ng, Christopher W and Yildirim, Ferah and
+              Gipson, Theresa A and Kratter, Ian H and Bodai, Laszlo and Song,
+              Wan and Lau, Alice and Labadorf, Adam and Vogel-Ciernia, Annie
+              and Troncosco, Juan and Ross, Christopher A and Bates, Gillian P
+              and Krainc, Dimitri and Sadri-Vakili, Ghazaleh and Finkbeiner,
+              Steven and Marsh, J Lawrence and Housman, David E and Fraenkel,
+              Ernest and Thompson, Leslie M",
+  abstract = "Transcriptional dysregulation is an early feature of Huntington
+              disease (HD). We observed gene-specific changes in histone H3
+              lysine 4 trimethylation (H3K4me3) at transcriptionally repressed
+              promoters in R6/2 mouse and human HD brain. Genome-wide analysis
+              showed a chromatin signature for this mark. Reducing the levels
+              of the H3K4 demethylase SMCX/Jarid1c in primary neurons reversed
+              down-regulation of key neuronal genes caused by mutant Huntingtin
+              expression. Finally, reduction of SMCX/Jarid1c in primary neurons
+              from BACHD mice or the single Jarid1 in a Drosophila HD model was
+              protective. Therefore, targeting this epigenetic signature may be
+              an effective strategy to ameliorate the consequences of HD.",
+  journal  = "Proc. Natl. Acad. Sci. U. S. A.",
+  volume   =  110,
+  number   =  32,
+  pages    = "E3027--36",
+  month    =  aug,
+  year     =  2013,
+  keywords = "neurodegeneration; polyglutamine",
+  language = "en"
+}
+
+
+@ARTICLE{Barry2017-it,
+  title    = "The long non-coding {RNA} {NEAT1} is responsive to neuronal
+              activity and is associated with hyperexcitability states",
+  author   = "Barry, Guy and Briggs, James A and Hwang, Do Won and Nayler, Sam
+              P and Fortuna, Patrick R J and Jonkhout, Nicky and Dachet, Fabien
+              and Maag, Jesper L V and Mestdagh, Pieter and Singh, Erin M and
+              Avesson, Lotta and Kaczorowski, Dominik C and Ozturk, Ezgi and
+              Jones, Nigel C and Vetter, Irina and Arriola-Martinez, Luis and
+              Hu, Jianfei and Franco, Gloria R and Warn, Victoria M and Gong,
+              Andrew and Dinger, Marcel E and Rigo, Frank and Lipovich, Leonard
+              and Morris, Margaret J and O'Brien, Terence J and Lee, Dong Soo
+              and Loeb, Jeffrey A and Blackshaw, Seth and Mattick, John S and
+              Wolvetang, Ernst J",
+  abstract = "Despite their abundance, the molecular functions of long
+              non-coding RNAs in mammalian nervous systems remain poorly
+              understood. Here we show that the long non-coding RNA, NEAT1,
+              directly modulates neuronal excitability and is associated with
+              pathological seizure states. Specifically, NEAT1 is dynamically
+              regulated by neuronal activity in vitro and in vivo, binds
+              epilepsy-associated potassium channel-interacting proteins
+              including KCNAB2 and KCNIP1, and induces a neuronal
+              hyper-potentiation phenotype in iPSC-derived human cortical
+              neurons following antisense oligonucleotide knockdown. Next
+              generation sequencing reveals a strong association of NEAT1 with
+              increased ion channel gene expression upon activation of
+              iPSC-derived neurons following NEAT1 knockdown. Furthermore, we
+              show that while NEAT1 is acutely down-regulated in response to
+              neuronal activity, repeated stimulation results in NEAT1 becoming
+              chronically unresponsive in independent in vivo rat model systems
+              relevant to temporal lobe epilepsy. We extended previous studies
+              showing increased NEAT1 expression in resected cortical tissue
+              from high spiking regions of patients suffering from intractable
+              seizures. Our results indicate a role for NEAT1 in modulating
+              human neuronal activity and suggest a novel mechanistic link
+              between an activity-dependent long non-coding RNA and epilepsy.",
+  journal  = "Sci. Rep.",
+  volume   =  7,
+  pages    = "40127",
+  month    =  jan,
+  year     =  2017,
+  language = "en"
+}
