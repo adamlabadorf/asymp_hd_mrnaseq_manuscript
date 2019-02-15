@@ -3,34 +3,32 @@
 \usepackage{subcaption}
 \usepackage{xcolor}
 \usepackage{enumitem}
-\usepackage{endfloat}
+%\usepackage{endfloat}
 
-%\begin{figure}
-%\centering
-%\includegraphics[width=0.75\linewidth]{stream.jpg}
-%\caption{Caption. \label{label}}
-%\end{figure}
-% methods study design and 
-% Figure one/ goal of the study
-% We don't have enough samples but subfigures is t-test to show concordance between t-test and counts beta from firth
-% second fig overall DE results independant off Brain region
-% third is concordance between symptomatic BA9 vs C BA9
-% asymp as controls then de with sympotmatic BA9. Difference between asymptoamtics and HD
+\author[1,2,3]{Filisia Agus}
+\author[1,2]{Diego Crespo}
+\author[3]{Richard H. Myers}
+\author[1,3,*]{Adam Labadorf}
+\affil[1]{Bioinformatics Hub, Boston University, Boston, 02118, USA}
+\affil[2]{Bioinformatics Program, Boston University, Boston, 02118, USA}
+\affil[3]{Department of Neurology, Boston University School of Medicine, Boston, 02118, USA}
 
-% Asymp CAU vs Control CAU (Whats Different) Only 2 and 2
-% Asymp BA9 vs Asymp CAU (differences in brain regions) Should look like Symp BA9 vs Control maybe
-%- To try to account for that Downloaded GTEx Data
-%- Firth Counts beta is an estimate with a range a var is sign associated with another variable of interest if the confidence interval of that estimate does not include zero Deseq2 GTEx data then get confidence intervals 
-
-%shuffle the labels
-
-\newcommand{\attn}[1]{\colorbox{red}{#1}}
-\newcommand{\todo}[1]{\colorbox{yellow}{#1}}
+\affil[*]{labadorf@bu.edu}
 
 \title{The Caudate Nucleus Undergoes Dramatic and Unique Transcriptional Changes in Human Prodromal Huntington's Disease Brain}
 
-\author{Adam Labadorf}
-
+\begin{abstract}
+The mechanisms underlying degeneration of the specific neurons in the striatum of Huntingon's Disease (HD) brain are currently unknown.
+The striatum is massively degenerated in late stage HD, making examination of post-mortem brain tissue from symptomatic individuals problematic.
+Striatal tissue is largely intact in the brains of asymptomatic HD positive (HD+) gene carriers, but these samples are exceedingly rare.
+In this study, caudate nucleus (CAU) tissue from two asymptomatic HD+ individuals was subjected to high throughput mRNA sequencing for comparison with similar datasets from symptomatic HD individuals and healthy controls.
+The overall transcriptional response in HD+ CAU shares much of the same response observed in HD Brodmann Area 9 (BA9) samples, an area relatively spared from significant degeneration.
+A set of differentially expressed (DE) genes related to the heat shock response are found in common between brain regions, and show much higher induction in HD+ CAU than HD BA9.
+The most highly perturbed pathways show near complete agreement when comparing diseased tissue with control, and a random forest classifier predicted that the two HD+ CAU samples strongly resemble HD BA9 and not control BA9.
+Nonetheless, when genes were prioritized by their specificity to HD+ CAU, many pathways spanning many biological processes emerged.
+Comparison of HD+ BA9 with HD BA9 identified genes that may be early responders to disease, and have altered expression in symptomatic individuals.
+This study presents the first examination of asymptomatic brain gene expression to date, and suggests new avenues of investigation into mechanisms underlying neurodegeneration in HD.
+\end{abstract}
 
 \begin{document}
 
@@ -39,25 +37,26 @@
 
 \thispagestyle{empty}
 
-\begin{abstract}
-The mechanisms underlying degeneration of the specific neurons in the striatum of Huntingon's Disease (HD) brain are currently unknown.
-The striatum is massively degenerated in late stage HD, making examination of post-mortem brain tissue problematic.
-Striatal tissue is largely intact in the brains of asymptomatic HD positive (HD+) gene carriers, but these samples are exceedingly rare.
-In this study, caudate nucleus (CAU) tissue from two asymptomatic HD+ individuals was subjected to high throughput mRNA sequencing (mRNA-Seq) for comparison with similar datasets from symptomatic HD individuals and healthy controls.
-The overall transcriptional response in HD+ CAU shares much of the same response observed in HD Brodmann Area 9 (BA9) samples, an area that is relatively spared from significant degeneration.
-A set of differentially expressed (DE) genes predominantly related to the heat shock response are found in common between brain regions, and show much higher induction in HD+ CAU than HD BA9.
-The most highly perturbed pathways show near complete agreement when comparing diseased tissue with control, and a random forest classifier predicted that the two HD+ CAU samples strongly resemble HD BA9 and not control BA9.
-Nonetheless, when genes were prioritized by their specificity to HD+ CAU, a large number of pathways spanning many biological processes emerged.
-Further comparison of HD+ BA9 with HD BA9 identified genes that may be early responders to disease, and have altered expression in symptomatic individuals.
-This study presents the first and largest examination of asymptomatic brain gene expression to date, and suggests many new avenues of investigation into the mechanisms underlying neurodegeneration in HD.
-\end{abstract}
+\hbox{
+\large
+\noindent
+\textbf{Significance Statement}
+}
+
+\noindent
+The caudate nucleus (CAU), the primarily affected brain region in Huntington's Disease (HD), is massively degenerated in late stage human HD brain, making study of the cellular disease process in this tissue problematic.
+The CAU in asymptomatic HD gene positive individuals is still intact, but unfortunately these samples are extremely rare.
+This study reports the first transcriptome-wide analysis of two such CAU samples from asymptomatic HD gene positive individuals.
+Using a combination of bioinformatic and machine learning approaches, we show that the cellular response in the HD CAU is dramatic and involves many different biological pathways.
+The results fit well with much of what is already known about the HD brain, and also suggest many new avenues for investigation.
+
 
 \section{Introduction}
 Huntington’s Disease (HD) is a devastating neurodegenerative disease caused by an expanded trinucleotide CAG repeat in the HTT gene.
 The striatum, comprising the caudate nucleus (CAU) and putamen, is the primary affected brain region in HD.
 As many as 90\% of neurons are lost in the striatum, which is massively degenerated in the late stages of the disease.
-Although other brain regions, such as the cerebellum and cerebral cortex show the hallmarks of HTT protein intranuclear inclusions, they are relatively free of neurodegeneration (Vonsattel et al. 1985; Sotrel et al. 1991).
-While studying the striatum directly in post mortem HD brains is preferable, the lack of neurons in these highly degenerated tissues make interpretation of these studies difficult.
+Although other brain regions, such as the cerebellum and cerebral cortex show the hallmarks of HTT protein intranuclear inclusions, they are relatively free of neurodegeneration \cite{Sotrel1991-bv,Vonsattel1985-ak}.
+While studying the striatum directly in post mortem HD brains is preferable, the lack of neurons in these highly degenerated tissues makes interpretation difficult.
 CAU samples from post-mortem human brains of asymptomatic HD gene positive (HD+) individuals, who died before evidence of significant degeneration has occurred, avoid this difficulty but are extremely rare.
 
 Previously, we performed unbiased transcriptomic analysis with high throughput sequencing (mRNA-Seq) in pre-frontal cortex Brodmannn area 9 (BA9) of twenty HD and forty-nine non-neurological control brain samples\cite{Labadorf2015-zf}.
@@ -75,7 +74,7 @@ The goals of this study were to 1) identify DE genes in the CAU prior to clinica
 
 Table \ref{tab:samples} contains a summary of the datasets used in this study.
 
-\begin{table}  [ht]
+\begin{table}[ht]
 \centering
 \rowcolors{2}{gray!25}{white}
 \begin{tabular}{|l|l|l|l|l|} \hline
@@ -88,7 +87,11 @@ HD+ CAU & 2 & 27.97 $\pm$ 7.91 & 7.35 $\pm$ 0.49 & 67.5 $\pm$ 26.16 \\ \hline
 C CAU & 2 & 31.24 $\pm$ 9.64 & 7.8 $\pm$ 1.27 & 66.5 $\pm$ 21.92 \\ \hline
 GTEx CAU & 102 & 14.03 $\pm$ 4.13 & 7.66 $\pm$ 0.76 & 60.07 $\pm$ 6.71 \\ \hline
 \end{tabular}
-\caption{Sample sizes for each class. PMI and Death columns are means followed by standard deviation in parentheses. Complete sample information is included in \todo{Supplemental Table X}. HD+ = asymptomatic HD gene positive, HD = symptomatic HD, C = non-neurological control, GTEx = the Genotype-Tissue Expression database, BA9=Brodmann area 9, CAU=Caudate nucleus.\label{tab:samples}}
+\caption{Sample sizes for each class.
+PMI and Death columns are means followed by standard deviation.
+Complete sample information is included in Supplemental Table 1.
+HD+ = asymptomatic HD gene positive, HD = symptomatic HD, C = non-neurological control, GTEx = the Genotype-Tissue Expression database, BA9=Brodmann area 9, CAU=Caudate nucleus.
+\label{tab:samples}}
 \end{table}
 
 \begin{figure}[ht]
@@ -117,15 +120,20 @@ Analysis & Group A & Group B & Sample size & \# DE genes & Genes detected \\ \hl
 (4) & HD+ CAU & C CAU & 2 vs 2 & 74 & 35554 \\ \hline
 (5) & GTEx BA9 & GTEx CAU & 90 vs 102 & 23778 & 34081 \\ \hline
 \end{tabular}
-\caption{Sample sizes for contrasts performed. First number corresponds to number of samples for column sample type, e.g. for analysis (1) there were 26 HD BA9 and 52 C BA9. *BA9 control samples that matched the age at death were chosen from the whole control set for this analysis. The number of DE genes reported have FDR $< 0.05$\label{tab:contrasts}}
+\caption{
+Sample sizes for contrasts performed.
+First number corresponds to number of samples for column sample type, e.g. for analysis (1) there were 26 HD BA9 and 52 C BA9.
+The number of DE genes reported have FDR $< 0.05$.
+*BA9 control samples that matched the age at death were chosen from the whole control set for this analysis.
+\label{tab:contrasts}}
 \end{table}
 
 \subsection{HD BA9, HD+ BA9, and HD+ CAU Show Concordant DE Genes}
 
 Figure \ref{fig:de_genes} contains differentially expressed (DE) gene metrics for analyses (1), (2), and (4).
 In Figure \ref{fig:de_genes}A, we see that the fold change distribution is similar between all three analyses, where more genes have increased expression overall than decreased and that this is particularly evident in the HD+ versus control analyses.
-The overlap of DE genes at FDR $< 0.05$ in Figure \ref{fig:de_genes}B shows that analyses (1) and (4) are more similar to each other than to (2), which is not surprising considering the caudate is expected to be more severely affected than the cortex in asymptomatic individuals.
-Figure 2C depicts the similarity in log 2 fold change (L2FC) for the HD+ versus C in BA9 with HD versus C in BA9 (top figure) and the HD+ versus C in CAU with HD versus C in BA9 (bottom figure) for DE genes at $p<0.05$ in both groups.
+The overlap of DE genes at FDR $< 0.05$ in Figure \ref{fig:de_genes}B shows that analyses (1) and (4) are more similar to each other than to (2).
+Figure \ref{fig:de_genes}C depicts the similarity in log 2 fold change (L2FC) for the HD+ versus C in BA9 with HD versus C in BA9 (top figure) and the HD+ versus C in CAU with HD versus C in BA9 (bottom figure) for DE genes at $p<0.05$ in both groups.
 These two figures show the extent of similarity of L2FC across these different contrasts.
 It is interesting to note that the symptomatic HD BA9 expression profile is well correlated with the HD+ versus C in CAU (Spearman $\rho=0.55$) and consequently the HD BA9 appears to be a good model for early disease effects in HD.
 This concordance is particularly remarkable when considering that the numbers of samples in the HD+ vs C analyses are extremely small.
@@ -136,7 +144,7 @@ This concordance is particularly remarkable when considering that the numbers of
 %\caption{DE Genes from (1), (2), and (4). A) Histograms of log2 fold changes B) 3-way Venn diagram of significant DE genes C) Scatter plots of (1) vs (2) and (1) vs (4) with Spearman $\rho$ D) Clustered heatmap of developmental/inflammatory genes \label{fig:de_genes}}
 %\end{figure}
 
-\begin{figure}
+\begin{figure}[ht]
 \centering
 \includegraphics[width=0.65\linewidth]{Histo_venn.png}
 \caption{DE Genes from (1), (2), and (4). A) Histograms of log2 fold changes B) 3-way Venn diagram of significant DE genes C) Scatter plots of log2 fold change in DE genes in (1) vs (2) and (1) vs (4) with Spearman $\rho$ \label{fig:de_genes}}
@@ -146,8 +154,7 @@ The overlapping DE genes in Figure \ref{fig:de_genes}B provide insight into both
 Table \ref{tab:early_genes} contains the DE statistics for the 19 genes found in the intersection of analyses (1), (2), and (4).
 These genes are perturbed across the entire disease course, from the HD+ BA9, which is the least affected tissue, to the most severely degenerated HD BA9 samples.
 All of these genes implicate the neuroinflammatory and neuroimmune responses, and seven of the 19 genes (BAG3, HSPA6, HSPB1, SERPINH1, DNAJB1, HSPA1A, HSPA1B) have direct roles in the heat shock response.
-As expected, the genes from Table \ref{tab:early_genes} are highly enriched for unfolded protein binding, molecular chaperones and focal adhesion, heat shock response, apoptosis, and response to oxidative stress by DAVID functional enrichment clustering (see Supplementary Table \ref{tab:supp_early_genes_DAVID}).
-
+As expected, the genes from Table \ref{tab:early_genes} are highly enriched for unfolded protein binding, molecular chaperones and focal adhesion, heat shock response, apoptosis, and response to oxidative stress.
 
 Figure \ref{fig:boxplot} contains normalized counts distributions for each sample group for the 19 common DE genes from Figure \ref{fig:de_genes}B.
 From left to right in each plot are counts from GTEx BA9, GTEx CAU, C BA9, C CAU, HD BA9, HD+ BA9, and HD+ CAU sample groups.
@@ -183,18 +190,17 @@ RRAD & Ras Related Glycolysis Inhibitor And Calcium Channel Regulator & 78.9 & 0
 RGS16 & Regulator Of G Protein Signaling 16 & 203.8 & 0.57 & 367.42 & 2.03 & 1198.58 & 2.24 \\ \hline
 
 \end{tabular}
-\caption{Common response genes in HD BA9, HD+ BA9, and HD+ CAU, corresponds to middle intersection of Venn diagram in figure 2B. Base mean columns are the mean normalized counts from the corresponding analysis. L2FC is log 2 fold change estimated by DESeq2. BM - base mean (number of normalized counts) for the gene. \label{tab:early_genes}}
+\caption{Common response genes in HD BA9, HD+ BA9, and HD+ CAU, corresponds to middle intersection of Venn diagram in figure 2B. Base mean columns are the mean normalized counts from the correspondng analysis. L2FC is log 2 fold change estimated by DESeq2. BM - base mean (number of normalized counts) for the gene. \label{tab:early_genes}}
 \end{table}
 
-\begin{figure}
+\begin{figure}[ht]
 \centering
 \includegraphics[width=0.9\linewidth]{boxplots.png}
 \caption{Boxplot of 19 common response genes in all analyses, corresponds to middle intersection of Venn diagram in figure 2B. Base mean columns are the mean normalized counts from all samples. The first two boxes correspond to GTEx BA9 and CAU, respectively, followed by the C BA9 and C CAU from this study. The last three in each plot depict HD BA9, HD+ BA9, and HD+ CAU, respectively.\label{fig:boxplot}}
 \end{figure}
 
-
 The 26 genes that are uniquely DE in (4) from Figure \ref{fig:de_genes}B (in green segment) appear in Table \ref{tab:CAU_genes}.
-These genes show only weak functional enrichment for extracellular space compartment, and plasma membrane by DAVID functional enrichment analysis (see Supplementary Table \ref{tab:supp_cau_genes_DAVID}), but we make two remarkable observations.
+These genes show only weak functional enrichment for extracellular space compartment, and plasma membrane, but we make two remarkable observations.
 First, several genes are consistent with the heat shock and inflammatory response observed in the common DE genes and in (1) more broadly, including HSPH1, CCL19, and CX3CR1.
 Second, four of the genes are readthrough transcripts (RPS10-NUDT3, UBE2F-SCLY, RPL17-C18orf32, and RP5-850E9.3) that originate from different chromosomes.
 
@@ -237,7 +243,7 @@ RP5-850E9.3 & Read-through transcript & 106.96 & -0.13 & 175.87 & 0.45 & 78.98 &
 \subsection{HD+ vs C CAU Enriched Pathways Are A Subset of Those In HD BA9}
 
 We next performed gene set enrichment analysis on each DE gene list to identify associated biological functions.
-Figure \ref{fig:gsea} contains the result of gene set enrichment analysis from analyses (1), (2), and (4) using the GSEA \cite{Subramanian2005-tj} algorithm as implemented in the fgsea R package \todo{CITE} against the MSigDB C2 Canonical Pathway gene set database\todo{CITE}.
+Figure \ref{fig:gsea} contains the result of gene set enrichment analysis from analyses (1), (2), and (4) using the GSEA \cite{Subramanian2005-tj} algorithm as implemented in the fgsea R package \cite{Sergushichev2016-hz} against the MSigDB C2 Canonical Pathway gene set database\cite{Subramanian2005-tj,Liberzon2011-ax}.
 Analysis (1), which has the most power to detect DE genes identifies 195 significantly enriched pathways at FDR $< 0.05$.
 All 13 of the pathways identified in the HD+ CAU versus C CAU are among these 195 of (1), and eleven of these are also seen in the HD+ BA9 versus C BA9.
 The substantial overlap of the enriched pathways suggests that the most highly perturbed pathways in the prodromal phase of disease expression are also detected in late stage HD BA9.
@@ -248,7 +254,8 @@ Consistent with our previous work \cite{Labadorf2017-qb}, the enriched pathways 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.5\linewidth]{Venn_fgsea_pathway.png}
-\caption{GSEA results for DE genes from analyses (1), (2), and (4). Figure shows overlap of significantly enriched MSigDB C2 Canonical Pathway gene sets at $p_{adj} < 0.05$ irrespective of direction of effect. Selected gene sets are included in Table \ref{tab:gsea} and the full results are in Supplemental Table \ref{tab:supp_de_gsea} \label{fig:gsea}}
+\caption{GSEA results for DE genes from analyses (1), (2), and (4). Figure shows overlap of significantly enriched MSigDB C2 Canonical Pathway gene sets at $p_{adj} < 0.05$ irrespective of direction of effect. Selected gene sets are included in Table \ref{tab:gsea} and the full results are in Supplemental Table 2.
+\label{fig:gsea}}
 \end{figure}
 
 \begin{table}[ht]
@@ -278,11 +285,10 @@ BIOCARTA NFAT PATHWAY & 1.95 & NS & 1.87 \\ \hline
 
 
 \subsection{HD BA9 DE Genes Perfectly Predict Disease State in HD+ CAU}
-\begin{figure}
+\begin{figure}[ht]
 \centering
 \includegraphics[width=0.7\linewidth]{heatmap.png}
 \caption{Clustered heatmap of normalized counts of top 200 genes from (1). Row clusters were created manually by inspection guided by clustered dendrogram, and enriched  biological pathways (or the genes themselves) for the genes in each cluster are listed as indicated. Color label: HD+ CAU - orange, HD+ BA9 - yellow, HD BA9 - red, C BA9 - blue, C CAU - light blue. \label{fig:de_gene_heatmap}}
-%\todo{heatmap: Top200_DEgenes.png} 
 %\attn{L2fc for HD+CAU/CCAU looks weird, will check it} 
 \end{figure}
 
@@ -344,7 +350,6 @@ HD+ CAU   	& 0.464		& 0.536		\\ \hline
 \caption{Random forest decision tree classifications of HD+ using genes from (1). All figures are the fraction of 20,000 trees that predicted each sample to have the corresponding label indicated in the column. E.g. 49.5\% of the trees predicted HD+ BA9 samples to be HD BA9. \label{tab:rf_predict}}
 \end{table} 
 
-
 \subsection{Gene Expression Patterns and Pathways Unique To HD+ CAU}
 
 Understanding the factors that cause the caudate to degenerate first in HD is critical in understanding the HD disease process.
@@ -360,11 +365,11 @@ Table \ref{tab:ttest} contains the top 10 genes ranked by descending absolute va
 For example, CFAP157 is increased 19.6 ($2^{4.3}$) fold in GTEx CAU over GTEx BA9, but is decreased by 1.09 ($2^{-0.13}$) fold in HD+ CAU over HD+ BA9, resulting in an difference in fold change of -4.43 (i.e. $-0.13 -4.3 = -4.43$).
 TVP23C-CDRT4, another readthrough transcript, is essentially unchanged in GTEx CAU compared with GTEx BA9, but is increased 5.85 fold in HD+ CAU over HD+ BA9 ($2.55 -(-0.02)=2.57$).
 
-\begin{table}[]
+\begin{table}[ht]
     \centering
     \rowcolors{2}{gray!25}{white}
     \begin{tabular}{|l|l|l|l|l|l|}\hline
-      ENSGID          & Gene Symbol  & HD+ L2FC (3) & GTEx L2FC (5) & $\delta$ (3) vs (5) L2FC & $t$ \\ \hline
+      ENSGID          & Gene Symbol  & HD+ L2FC (3) & GTEx L2FC (5) & $\Delta$ (3) vs (5) L2FC & $t$ \\ \hline
       ENSG00000160401 & CFAP157      & -0.13        & 4.30          & -4.43                    & 20.45 \\ \hline
       ENSG00000077327 & SPAG6        & -2.20        & 2.64          & -4.84                    & 15.28 \\ \hline
       ENSG00000152611 & CAPSL        & -2.59        & 3.65          & -6.24                    & 14.63 \\ \hline
@@ -377,12 +382,15 @@ TVP23C-CDRT4, another readthrough transcript, is essentially unchanged in GTEx C
       ENSG00000103569 & AQP9         & 1.59         & -0.72         & 2.31                     & -12.41 \\ \hline
       ENSG00000140795 & MYLK3        & -0.78        & 1.87          & -2.65                    & 12.10 \\ \hline
     \end{tabular}
-    \caption{Top 10 genes that show different effect sizes (L2FC) between (3) and (5). These genes are most likely perturbed in CAU specifically due to HD and not due to brain region. $\delta$ L2FC is the log2 fold change of (5) minus (3), where a positive value means that gene expression is greater in HD+ CAU vs BA9 than GTEx CAU vs BA9. Full results are in Supplemental Table \ref{tab:supp_ttest}.}
+    \caption{Top 10 genes that show different effect sizes (L2FC) between (3) and (5).
+    These genes are most likely perturbed in CAU specifically due to HD and not due to brain region.
+    $\Delta$ L2FC is the log2 fold change of (5) minus (3), where a positive value means that gene expression is greater in HD+ CAU vs BA9 than GTEx CAU vs BA9.
+    Full results are in Supplemental Table 4.}
     \label{tab:ttest}
 \end{table}
 
 The resulting t-statistics from this analysis induced a ranking of genes that were then subjected to gene set enrichment analysis against the MsigDB C2 Canonical Pathway gene set database.
-The analysis identified 405 significantly enriched gene sets at FDR $<$ 0.05, and all but one of these gene sets were positively enriched, indicating that genes increased in HD+ CAU relative to HD+ BA9 have strong functional coherence (full results in Supplemental Table \ref{tab:supp_ttest_direct_gsea}).
+The analysis identified 405 significantly enriched gene sets at FDR $<$ 0.05, and all but one of these gene sets were positively enriched, indicating that genes increased in HD+ CAU relative to HD+ BA9 have strong functional coherence (full fgsea results in Supplemental Table 3).
 These results were combined with the enriched gene sets from (1), (2), and (4) and subsequently divided into so-called Agreement Classes based on the pattern of significance across all four analyses.
 The Agreement Class is an ordinal indicator for the degree of HD+ CAU-specificity as follows.
 \texttt{CAU Unique} gene sets are only seen in HD+ CAU relative to HD+ BA9 (i.e. (3) vs (5)).
@@ -391,7 +399,7 @@ Finally, \texttt{BA9 Unique} only show enrichment in HD BA9 vs C BA9 (1).
 To aid in interpretation, the gene sets were manually curated into 10 high level functional categories: Angiogenesis/Blood Brain Barrier (BBB), Apoptosis, Cell Cycle/Development, Cytoskeleton/Extracellular Matrix (ECM), Immune Response/Cancer, Metabolism, Neuron System, Protein Folding/Other, Signaling, and Transcription/Translation.
 To illustrate these ideas, a heatmap of the enriched gene sets related to the Neuron System is in Figure \ref{fig:cau_ba9_gtex}A.
 
-\begin{figure}
+\begin{figure}[ht]
 \centering
 \includegraphics[width=\linewidth]{bigfig_annot.png}
 \caption{A) Enriched gene sets related to the Neuron System.
@@ -402,7 +410,6 @@ B) Overlap of significantly enriched gene sets regardless of category.
 The gene sets enriched in (4) are a subset of those in (1), and thus are not listed.
 C) Distribution of gene sets by agreement class divided into ten high level functional categories, showing that some functions are more selectively enriched in HD+ CAU relative to BA9 than others.
 D) Graph-based representation of the Cell Cycle/Development gene sets from C. Each node is a gene set, and nodes with connected edges share more than 25\% of their leading edge genes, thus representing the same expression signal.\label{fig:cau_ba9_gtex}}
-%\todo{heatmap: Top200_DEgenes.png} 
 %\attn{L2fc for HD+CAU/CCAU looks weird, will check it} 
 \end{figure}
 
@@ -412,7 +419,7 @@ This is in contrast to Angiogenesis/BBB, where most of the gene sets are seen in
 Gene sets related to Apoptosis, Cytoskeleton/ECM, Immune Response/Cancer, Signaling, and Transcription/Translation have a mixture of CAU unique, CAU enhanced, and BA9 specific gene sets.
 When we examine the enriched gene sets from Cell Cycle/Development more closely using a graph-based representation (Figure \ref{fig:cau_ba9_gtex}D), we observe that there are two distinct groups of genes enriched separately in CAU vs BA9 and BA9 itself.
 In particular, BA9 is enriched for a set of genes relating to meiosis, whereas the CAU unique processes involve mitosis.
-Heatmaps and graph representations of all other categories are included in Supplemental File \ref{file:supp_cau_gtex_figures}.
+Heatmaps and graph representations of all other categories are included in Supplemental File 5.
 Overall, this comparison of enriched gene sets in HD+ CAU relative to BA9 with the other two brain regions identifies the common and different cellular processes that are active in different brain regions.
 
 \subsection{Comparing DE Gene Lists Identifies Early vs Late Responding Genes}
@@ -446,10 +453,10 @@ Genes in quadrants II and IV are genes that show differential behavior, and are 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.5\linewidth]{fig5.png}
-\caption{Scatter plot of fold changes from 215 early response genes from (1) and (2). \todo{Still need to label names of the genes in II and IV} \label{fig:early_genes}}
+\caption{Scatter plot of fold changes from 215 early response genes from (1) and (2). \label{fig:early_genes}}
 \end{figure}
 
-The statistics from the genes in quadrants II and IV, as well as the 4 additional genes detected in (2) that were filtered out of (1) due to low counts are listed in Table \ref{tab:early_discordant_genes}.
+The statistics from the genes in quadrants II and IV, as well as the 4 additional genes detected in (2) that were filtered out of (1) due to low counts are listed in Tables \ref{tab:early_discordant_genes_II} and \ref{tab:early_discordant_genes_IV}.
 Most of the genes that are down regulated in (2) with respect to (1) are ribosomal protein genes that are essentially absent from HD+ BA9.
 The two genes that are massively increased in (2) but decreased in (1) are NPAS4, Neuronal PAS Domain Protein 4, and NEAT1\_2.
 
@@ -534,8 +541,31 @@ The homeotic and inflammatory gene signatures appear to be equally present in th
 Finally, we identified key genes that appear to be early responders to the disease process by comparing HD+ BA9 and HD BA9.
 HD+ BA9 appears to be the least affected brain region of the three studied here; therefore, genes that show different behavior in these regions are likely to be part of an early response that is lost as the disease process progresses.
 The two genes in particular that are increased in HD+ BA9 relative to HD BA9 are NPAS4, which as been implicated in the cortex of mouse models of HD \cite{Vashishtha2013-su} and NEAT1, which has been shown to be associated with neuronal hyperactive state \cite{Barry2017-it}.
-A second group of poorly annotated but consistently expressed genes seems to be uniquely expressed in HD BA9 and may be evidence of severe transcriptional dysregulation previously observed in this tissue.
- 
+A second group of poorly annotated but consistently expressed genes seems to be uniquely expressed in HD BA9 and may be evidence of severe transcriptional dysregulation previously observed in this tissue\cite{Labadorf2017-qb,Labadorf2015-zf}.
+
+Despite the small HD+ sample size, the consistency between the HD+ and HD BA9 results supports the robustness of these findings.
+Not only do the overall effect size and enriched pathway signatures agree to a great extent, many of the biological processes implicated are well supported in the literature.
+Immune response has been heavily implicated in HD and neurodegenerative disease in general\cite{Skaper2018-oh,Sekar2015-cl,Crotti2015-hz,Wang2015-ps,Heneka2015-iu,Labadorf2017-qb,Labadorf2015-zf}, and the broad agreement between the diseased tissues across brain regions in this study lends support to the role of inflammation in the prodromal HD brain.
+Of particular note is the common heat shock response observed in the common DE genes in all comparisons with control.
+The heat shock system is primarily responsible for maintaining proteostasis and protein conformation during times of stress, and has been directly implicated in both animal \cite{Riva2012-nx} and in vitro \cite{Chafekar2012-zh} models of Huntington's disease.
+The fact that expression of key heat shock genes appears to be perturbed across the entire disease course is strong evidence of the important role these proteins play in disease.
+
+The differences revealed between HD+ CAU and HD+ BA9 may offer insight into why the striatum is uniquely vulnerable to neurodegeneration.
+The enriched functional categories that are the most specific to HD+ CAU include Metabolism and Cell Cycle and Development.
+Interestingly, when the cell cycle gene sets are examined closely (Figure \ref{fig:cau_ba9_gtex}D), we observe that the gene sets uniquely enriched in HD+ CAU are related to mitosis, while the smaller number enriched in BA9 involve meiosis.
+The striatum, unlike the cortex, has a resident population of neuroblasts that enables neurogenesis in the adult human brain\cite{Ernst2014-zw}.
+A recent hypothesis has proposed that these neuroblasts are impaired in HD, resulting in a lack of repleneshing neurons over time and eventual destruction of tissue \cite{Kandasamy2018-am}.
+The unique presence of increased mitotic gene expression, paired with the observation that many neuronal pathways are also increased in HD+ CAU compared with HD+ BA9, is strong evidence that neurogenesis is indeed active in this region prior to symptom onset.
+However, it still remains to be shown why these specific neurons degenerate in the first place, and why this neurogenesis ceases over time.
+The enrichment of meiosis in BA9 is curious, and does not lend an immediate interpretation.
+One possibile explanation is that the same signals that trigger neurogenesis in CAU are also present in BA9, but that cortical neurons lack neurogenic capabilities and 'misfire' in response to the developmental signals.
+An intriguing feature of the HD BA9 samples is the expression of homeotic and developmental genes, which might be a consequence of a neuron that is trying to regenerate but cannot.
+
+Given the extreme rarity of HD+ CAU samples, it is difficult to conceive of validation experiments to test these findings given our current disease models.
+The combined complexity of the central nervous and immune systems makes accurate models of human HD challenging to devise, since there is clear involvement and interaction of major players in both of these systems.
+Only a few of the many findings in this study have been discussed in this manuscript, and much greater insight may likely be gained from further examination by those specializing in different aspects of the biology implicated here.
+These results are therefore put forward as a source of hypothesis and inspiration for new models and avenues of research.
+
 \section{Methods}
 
 \subsection{Human Subjects}
@@ -545,20 +575,21 @@ The individuals in this study are exempt as defined by the Boston University Sch
 26 symptomatic HD and 56 control BA9 mRNA-Seq libraries were used as previously described \cite{Labadorf2017-qb}.
 Paired BA9 and CAU tissues from two asymptomatic HD gene positive individuals, one additional asymptomatic HD gene positive BA9 sample, and two CAU samples from neurologically normal controls were extracted and processed to generate mRNA-Seq libraries following the procedure previously described \cite{Labadorf2017-qb}.
 Statistics for new samples reported in this study are found in Table \ref{tab:asymp_samples}.
+Raw and processed read data have been deposited into GEO under accessions GSE64810 and GSEXXXXX (upload in progress).
 
 \begin{table}[ht]
 \centering
 \rowcolors{2}{gray!25}{white}
 \begin{tabular}{|l|l|l|l|l|l|l|l|l|}
 \hline
-Sample ID & Status  & BA9 & CAU & PMI   & Age of Death & Sex & Age of Onset & CAG  \\ \hline
-H\_1105   & HD+      & X   & X   & 33.56 & 49.0         & M   & NA           & 41   \\
-H\_1104   & HD+      & X   & X   & 22.37 & 86.0         & F   & NA           & 41   \\
-H\_1106   & HD+      & X   &     & 16.58 & 19.0         & M   & NA           & 55   \\
-C\_0113   & Control  &     & X   & 38.06 & 51.0         & M   & NA           & NA   \\
-C\_0114   & Control  &     & X   & 24.42 & 82.0         & F   & NA           & NA   \\ \hline
+Sample ID & Status  & BA9 & CAU & PMI   & Age of Death & Sex & CAG  \\ \hline
+H\_1105   & HD+      & X   & X   & 33.56 & 49.0         & M  & 41   \\
+H\_1104   & HD+      & X   & X   & 22.37 & 86.0         & F  & 41   \\
+H\_1106   & HD+      & X   &     & 16.58 & 19.0         & M  & 55   \\
+C\_0113   & Control  &     & X   & 38.06 & 51.0         & M  & NA   \\
+C\_0114   & Control  &     & X   & 24.42 & 82.0         & F  & NA   \\ \hline
 \end{tabular}
-\caption{Sample statistics. HD+ are asymptomatic gene positive individuals. Two HD+ individuals had both BA9 and CAU brain tissues available for analysis. Full sample statistics are included in \todo{Supplemental Table S1}. \label{tab:asymp_samples}}
+\caption{Sample statistics. HD+ are asymptomatic gene positive individuals. Two HD+ individuals had both BA9 and CAU brain tissues available for analysis. Full sample statistics are included in Supplemental Table S1. \label{tab:asymp_samples}}
 \end{table}
 
 \subsection{Quality Control and mRNA Abundance Estimation}
@@ -566,10 +597,10 @@ mRNA-Seq libraries were subject to quality control and analysis using a custom p
 All sequencing libraries were quality- and adapter-trimmed with trimmomatic \cite{Bolger2014-fp}, and then assessed to be of high quality using fastqc \cite{fastqc} and MultiQC \cite{Ewels2016-qh}.
 Trimmed reads were analyzed with salmon \cite{Patro2015-jg} to obtain mRNA abundance estimates using the GENCODE v26 gene annotation \cite{Harrow2012-fr}.
 Abundance estimates from all samples were concatenated into a single matrix and normalized with the DESeq2 normalization method \cite{Love2014-nu}.
-The normalized expression matrix was investigated for outlier samples using PCA, where no outliers were found \todo{(Supplemental Materials Figure S1)}.
+The normalized expression matrix was investigated for outlier samples using PCA, where no outliers were found (Supplemental File S1 Figure 1).
 Due to the different numbers of samples, genes in each analysis were filtered using different strategies.
-For analyses 1, 2 and 5, genes with counts of 0 for either group was filtered out.
-For analyses 3 and 4 genes with more than 2 zeros and genes with more than 4 zeros was filtered out respectively.
+For analyses 1, 2 and 5, genes with more than 50\% zero counts within each group was filtered out.
+For analyses 3 and 4 genes with more than 2 zeros and genes with more than 4 zeros was filtered out, respectively.
 Therefore, the genes detected for each analysis were different as seen in Table \ref{tab:contrasts}.
 
 \subsection{GTEx Analysis of BA9 vs CAU}
@@ -579,91 +610,52 @@ These 192 samples were used to form the basis of a contrast between HD+ BA9 and 
 
 \subsection{Differential Expression Analysis}
 Five differential expression contrasts were conducted in this study as described in the analysis matrix of Table \ref{tab:contrasts} and Figure \ref{fig:contrasts}.
-Differential expression for symptomatic HD BA9 vs C BA9 and GTEx BA9 vs GTEx CAU were assessed using DESeq2 \cite{Love2014-nu}.
-Genes associated with case status at FDR $< 0.05$ were considered significant.
+Differential expression statistics for all five analyses were assessed using DESeq2 \cite{Love2014-nu}, modeling counts as a function of either disease status or brain region, adjusting for age at death and sex.
+Differentially expressed genes were considered significant if they had FDR $< 0.05$.
 
-The HD+ sample size was too small to allow for confident statistical inference, so a conservative filtering and differential expression strategy was employed for each HD+ contrast to eliminate genes that were likely to be driven by noise.
-First, only genes with a mean read count greater than 5 in either compared group were retained from the all sample normalized.
-Then, genes were eliminated if the ratio between the largest and smallest count within either of the groups was greater than 2.
-Finally, genes were eliminated for consideration if the absolute value log2 ratio between the two compared groups was less than 1.
-% for 1, 2, 5:  >= 50% non zeros
-% for 3: less than 4 zeros
-% for 4: less than 3 zeros
-
-The remaining genes are considered differentially expressed and the log2 ratio of mean counts for each group was used as the differential expression value for each gene.
-Since the sample size is so small, $p$-values are unreliable and therefore were not considered in these contrasts.
-
-\subsection{Comparison of DE Genes}
-
-There are several meaningful comparisons we sought to make with the contrasts above:
-
-\begin{enumerate}[label=\Alph*.]
-\item How does response in HD+ BA9 compare with HD BA9? (2 vs 1)
-\item How does response in HD+ CAU compare with HD BA9? (4 vs 1)
-\item Are there any HD-specific differences between BA9 and CAU? (3 vs 5)
-\end{enumerate}
-
-To address questions A and B, Spearman correlation between the DESeq2 log2 fold change estimates from analysis (1) and the log2 fold change values from analyses 2 and 4, respectively, were calculated.
-
-The GTEx analysis (5) was conducted to form a basis of expectation for genes that differ due to brain region as analysis 3 is confounded by this variable.
-To address this issue, DESeq2 log2 fold change estimates and their corresponding standard errors were used to parameterize normal distributions for each gene in analysis 5 (see \todo{Supplemental Material section 2} for the justification of this rationale).
-These normal distributions can thus be used to, in conjunction with the log2 counts ratio point estimates calculated from analysis 3, identify genes that are likely to be differentially perturbed on account of disease beyond what we expect from different brain regions.
-The normal distribution for each gene was used to calculate a two-tailed $p$-value for its corresponding log2 counts ratio from analysis 3.
-$p$-values were adjusted for multiple hypotheses using the Benjamini-Hochberg procedure \cite{Benjamini1995-ok} and genes with FDR $< 0.05$ were considered significant.
-These significant genes are candidates for disease-related effects between brain regions.
 
 %%%%% DESEq2 stuff here?
 % Compared DEseq2 results from GTEx with asymptomatic
 
-\subsection{Gene set enrichment and DAVID Functional Clustering}
+\subsection{Gene set enrichment}
 
-To understand more about the genes which are perturbed, Fast Gene Set Enrichment Analysis (FGSEA) was performed on all the comparisons using the .
-For each comparison, the DESeq2 log2FoldChange statistisc were ranked in descending order and used as input for GSEA.
-Additionally, if DE genes were found to be less than 2000, DAVID was also used to analyze for enrichment and clustering.
-%% Still need to find a good way to compare FGSEA results between comparisons
-%% How to show FGSEA table?
+Gene set enrichment analysis for all DE gene lists was performed using the fgsea \cite{Sergushichev2016-hz} R package in bioconductor \cite{Huber2015-xa} and MSigDB C2 Canonical Pathway database version 6.2 \cite{Subramanian2005-tj,Liberzon2011-ax}.
+GSEA statistics were calculated using each gene list sorted by descending log2 fold change, and significance was assessed for gene sets at FDR $< 0.05$.
 
 \subsection{Random Forest Predictive Model to Classify HD+}
 
-We sought to examine the HD+ samples from both brain regions for similarity with HD and C samples using only abundance estimates.
-To accomplish this, we implemented a random forest decision tree classifier trained on the top 250 DE genes from (1).
-A decision tree is a predictive model that iteratively bifurcates a set of labeled samples by identifying features (e.g. genes) that have predictive power when partitioning samples by a fixed threshold \todo{Cite?}.
+A random forest of decision trees was used to classify the HD+ CAU and BA9 samples as either HD BA9 or C BA9.
+A decision tree is a predictive model that iteratively bifurcates a set of labeled samples by identifying features (e.g. genes) that have predictive power when partitioning samples by a fixed threshold.
+The decision tree algorithm is a machine learning technique that is used to identify features and their levels that best partition a sample set according to given labels.
 For example, if gene A is expressed between 10 and 20 in one set of samples and between 30 and 40 in another, samples with an expression value less than 25 are likely to belong to one class, while samples with an expression value greater than 25 will belong to the other.
 If a single gene cannot perfectly divide samples into their labels, additional genes are chosen in a hierarchical fashion until samples with different labels are perfectly partitioned.
-The decision tree building algorithm is a machine learning technique that is used to identify features and their levels that best partition a sample set according to their labels.
 Once a decision tree has been trained, it may be used to classify previously unobserved samples into the labels used in training.
 
-Individual decision trees trained with all samples are often over-fit, so a randomization technique called random forests are also often used with decision trees to identify robust features \todo{cite?}.
-Random forests perform bootstrap sampling on samples and random selection of genes to build a large number of decision trees, where each is a different predictive model with different sets of features.
+Individual decision trees trained with all samples are often over-fit, so a randomization technique called random forests are used with decision trees to identify robust predictive features.
+Random forests perform bootstrap sampling on samples and random selection of features to build a large number of decision trees, where each is a different predictive model with different sets of features.
 After training, unobserved samples are applied to each decision tree in the forest and the predicted label of each is recorded and reported.
 The agreement of predicted labels across all trees in the forest is an indication of the predictive power of the overall dataset.
+A random forest where all trees classify a new sample to have the same label indicates a perfect classification.
+A random forest predicting a sample to be of either class with equal frequency has no predictive power.
 
 We trained a random forest of decision trees using the HD BA9 vs C BA9 normalized counts matrix to arrive at a predictive model of genes that well classify the samples.
 The random forest was trained using cross-validation, where the samples are divided into training and test sets.
 Decision trees in the forest are built using the training samples and their predictive accuracy is assessed on the test set.
 In this way, cross validation enables assessing the robustness of a classifier and avoids over-fit predictive models.
-Each random forest contained 20,000 trees, 250 genes, 75\% training sets were created with ratios of HD and Control samples which mirrored ratios present in the dataset, but other ratios of 0.7 and 0.8 were explored
-as well. The random forest was repeated 1000 times. \todo{what are the other details? - see source comment}.
+Each random forest contained 20,000 trees, 250 genes, 75\% training sets were created with ratios of HD and Control samples which mirrored ratios present in the dataset.
+Prediction accuracy was assesses as the mean true positive predictions divided by the number of trees across all samples in the test set.
+1000 random forests were trained in this way, and the average and standard deviation of true positive rates were recorded for each.
+See Table \ref{tab:random_forest_cross_val} for statistics on cross validation prediction accuracy.
 
-% [20,000 trees, 250 features (top/random genes)] x 1000 repeats
-% take average and std of the accuracy + results
-The first predictive model was built using normalized counts from the top 250 DE genes from (1) by $p$-value.
-The HD+ BA9 and CAU samples were then applied to the random forest to predict which class, i.e. either HD BA9 or C BA9, each sample most resembled.
-
-Random forest uses a gini value to divide genes into Control or HD labels.
-Even if a less predictive gene was chosen as the root, the stronger predictive genes will eventually be chosen as the leaves to divide the samples cleanly into HD or control.
-Therefore, the random forest created by random genes holds some predictive value.
-Therefore, to verify our methodology, statistics from random forests with permuted sample labels and randomly selected genes was used to assess the basal predictive power.
-As expected, in all cases, there were 50\% accuracy and predictive power which suggests no bias.
-We built random forests with 250 randomly selected genes, rather than the top 250, and performed classification of the HD+ samples.
-Additionally, we built random forests with permuted sample labels and randomly selected genes to assess the basal predictive power under a null dataset.
-The results of these randomized random forest classifiers is included in the \todo{Supplemental Materials}.
+HD+ CAU and HD+ BA9 samples were applied to the random forests trained above.
+First, random forests built with the top 250 DE genes from (1) ranked by significance were used to predict the HD+ samples as either HD or C.
+We then built random forests with 250 randomly selected genes from (1), irrespective of significance, and performed classification of the HD+ samples.
+Finally, we built random forests with permuted sample labels and randomly selected genes to assess the basal predictive power under a null dataset.
+The results of these randomized random forest classifiers is included in Table \ref{tab:rf_predict}.
 
 \begin{table}[ht]
 \caption{Random Forest Results}
-\begin{subtable}{.5\linewidth}
 \centering
-\caption{Accuracy Results}
 \begin{tabular}{cccc} \hline
 					& Top 250 DE 		& Random 250	& Null	\\ \hline
 Train accuracy		& 1	$\pm$ 0			& 1	$\pm$ 0		& 1	$\pm$ 0				\\ 
@@ -673,167 +665,71 @@ Specificity			& 0.967	$\pm$ 0.081	& 0.786	$\pm$ 0.173		& 0.494 $\pm$ 0.211		\\
 False positive		& 0.029	$\pm$ 0.087	& 0.221	$\pm$ 0.175		& 0.51 $\pm$ 0.211		\\ 
 False negative		& 0.0033$\pm$ 0.081	& 0.214	$\pm$ 0.173		& 0.506 $\pm$ 0.211		\\ \hline
 \end{tabular}
-\end{subtable}%
-\begin{subtable}{.5\linewidth}
-\centering
-\caption{Asymptomatic prediction}
-\begin{tabular}{ccc} \hline
-Top 		& HD BA9 	& Control BA9   \\ \hline
-HD+ BA9   	& 0.495 	& 0.505			\\
-HD+ CAU   	& 1			& 0			\\ \hline
-Random   	& HD BA9 	& Control BA9		\\ \hline
-HD+ BA9   	& 0.285		& 0.715			\\
-HD+ CAU   	& 0.845		& 0.155			\\ \hline
-Null 		& HD BA9 	& Control BA9		\\ \hline
-HD+ BA9   	& 0.495		& 0.505		\\
-HD+ CAU   	& 0.477		& 0.522		\\ \hline
-\end{tabular}
-\end{subtable} 
+\caption{Accuracy Results.
+Random forest cross validation prediction accuracy statistics for the HD vs C samples.
+The Random 250 random forests were generated by selecting from a random subset of 250 genes from the overall dataset.
+The Null random forests were generated by shuffling sample labels and choosing 250 genes at random.
+}
+\label{tab:random_forest_cross_val}
 \end{table}
-%%% Mean of 20000 trees, 10000 iterations (*100 for all values to get percentage)
-
-%%%%%%% Supplemental material
-%\begin{table}[ht]
-%\caption{Random Forest Results with permuted labels}
-%\begin{subtable}{.5\linewidth}
-%\centering
-%\caption{Accuracy Results}
-%\begin{tabular}{ccc} \hline
-%					& Top 250 DE 		& Random 250	\\ \hline
-%Train accuracy		& 1					& 1	 		\\ 
-%Test accuracy		& 0.5				& 0.494	\\ 
-%Sensitivity			& 0.504				& 0.49		\\ 
-%Specificity			& 0.501				& 0.505		\\ 
-%False positive		& 0.496				& 0.51		\\ 
-%False negative		& 0.499				& 0.495		\\ \hline
-%\end{tabular}
-%\end{subtable}%
-%\begin{subtable}{.5\linewidth}
-%\centering
-%\caption{Asymptomatic prediction}
-%\begin{tabular}{ccc} \hline
-%Top 250 genes 	& HD BA9 	& Control BA9   \\ \hline
-%HD+ BA9   		& 0.509		& 0.491			\\
-%HD+ CAU   		& 0.516		& 0.484			\\ \hline
-%Random 250 genes   	& HDBA9 	& Control BA9		\\ \hline
-%HD+ BA9   		& 0.494		& 0.506			\\
-%HD+ CAU   		& 0.52		& 0.48			\\ \hline
-%\end{tabular}
-%\end{subtable} 
-%\end{table}
-%%% Mean of 20000 trees, 10000 iterations (*100 for all values to get percentage)
-
-%
-%Differential expression using GTEx yielded 15,977 differentially expressed between the two brain regions. 
 
 \subsection{t-statistic analysis of DESeq2 log fold changes}
 
-\todo{please describe your method for this here}
+We sought to identify genes that show different response between HD+ CAU and HD+ BA9 (3 vs 5) and early response genes from HD+ BA9 vs HD BA9 (1 vs 2).
+Although an interaction model estimating the difference in effect size between BA9 and CAU by HD status is a more conventional approach, the small number of samples in the HD+ group (i.e. 2 HD+ CAU vs 3 HD+ BA9) prohibits reliable fitting in this case.
+Therefore, we utilized a $t$-statistic methodology to quantify the difference between DESeq2 log2 fold change estimates while taking the uncertainty those estimates into account.
+DESeq2 implements a negative binomial generalized linear model, whose estimated coefficients are normally distributed.
+DESeq2 also reports the standard error of its log2 fold change estimates, enabling the calculation of a $t$-statistic corresponding to the confidence-adjusted difference in log2 fold change.
+Specifically, we calculate a $t$-statistic assuming both unequal sample sizes and unequal variance:
+
+$$
+t = \frac{X_1 - X_2}{s_{\Delta}}
+$$
+
+where
+
+$$
+s_{\Delta} = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}.
+$$
+
+Here, $X_1$ and $X_2$ are the log2 fold change estimates from each comparison (e.g. (3) vs (5)), and $s_1$ and $s_2$ are the corresponding standard deviation estimates (i.e. standard error multiplied by the square root of the number of samples) as reported by DESeq2.
+$n_1$ and $n_2$ are the number of samples total used for each analysis (e.g. for (3) vs (5), $n_1 = 2+3 = 5$ and $n_2 = 90+102 = 192$, see Table \ref{tab:contrasts}).
+When assessing significance, the degrees of freedom is calculated using the Welch-Satterthwaite equation:
+
+$$
+\text{d.f.} = \frac{
+    \left ( \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} \right )^2
+} {
+    \frac{(s_1^2/n_1)^2}{n_1-1} +
+    \frac{(s_2^2/n_2)^2}{n_2-1}
+}.
+$$
+
+\subsection{Comparison of DE Gene Lists and Enriched Gene Sets}
+
+$t$-statistics were calculated as described above for (3) vs (5) and (1) vs (2), where positive $t$ corresponded to an increased log2 fold change in HD+ CAU over HD+ BA9 and HD+ BA9 over HD BA9, respectively.
+For (3) vs (5), genes were then ranked by descending $t$-statistic and analyzed for gene set enrichment with fgsea \cite{Sergushichev2016-hz}.
+These GSEA results were then combined with those calculated for (1), (2), and (4).
+Significantly enriched gene sets at FDR $<0.05$ were manually curated into 10 high level functional categories: Angiogenesis/Blood Brain Barrier (BBB), Apoptosis, Cell Cycle/Development, Cytoskeleton/Extracellular Matrix (ECM), Immune Response/Cancer, Metabolism, Neuron System, Protein Folding/Other, Signaling, and Transcription/Translation.
+Each gene set was also categorized into so-called Agreement Classes, an ordinal scale representing how specific the gene set is to HD+ CAU, as described in the results section.
+Combination of GSEA results, curation of gene sets, calculation of agreement classes, and plots from Figure \ref{fig:cau_ba9_gtex} were made using python, jupyter lab, pandas, and matplotlib python libraries.
+
+Gene sets within each functional category were also cast as a graph, where each node is a gene set, and edges between nodes were drawn if the gene sets shared more than 25\% of their leading edge genes.
+Graph analysis was performed using python, networkx, and matplotlib.
+All analysis and figure code for this project are available at
+
+\href{https://bitbucket.org/bubioinformaticshub/asymptomatic_hd_mrnaseq}{bitbucket.org/bubioinformaticshub/asymptomatic\_hd\_mrnaseq}.
+
+
 
 \section{Acknowledgements}
 
+We would like to thank the Jerry McDonald Huntington Disease Research Fund for supporting this work.
+The Genotype-Tissue Expression (GTEx) Project was supported by the Common Fund of the Office of the Director of the National Institutes of Health, and by NCI, NHGRI, NHLBI, NIDA, NIMH, and NINDS.
+The data used for the analyses described in this manuscript were obtained from dbGaP accession number phs000424.v7.p2 on 10/11/2017.
+We acknowledge the help of Ben Draves, Albert Ding, Becky Yu, and Jannie Yu of the BU MSSP statistical consulting service under the guidance of Professor Eric Kolaczyk. 
 Brain illustrations created by Freepik.
 
 \bibliography{sample}
 
-\section*{Supplementary Figures and Tables}
-
-%%% Supplementary table S1: Full sample statistics
-
-%%% Supplementary figure S1: PCA for outliers
-\begin{figure}[ht]
-\includegraphics[width=0.5\linewidth]{PCA.png}
-\caption{PCA}
-\end{figure}
-
-\begin{figure}[ht]
-\includegraphics[width=0.5\linewidth]{PCA_swarm.png}
-\caption{Swarmplot}
-\end{figure}
-
-%%% Supplementary table
-\begin{table}[ht]
-\caption{Random Forest Results for Top and Random genes}
-\centering
-\begin{tabular}{cccccc} \hline
-\# of top genes		& 2000	 	& 4000		& 6000		& 8000		& 10000 	\\ \hline
-Train accuracy		& 1			& 1			& 1			& 1			& 1				\\ 
-Test accuracy		& 0.884		& 0.875 	& 0.861		& 0.863 	& 0.858			\\ 
-Sensitivity			& 0.887		& 0.883		& 0.863		& 0.871 	& 0.865			\\ 
-Specificity			& 0.882		& 0.868		& 0.86		& 0.857 	& 0.852			\\
-False positive		& 0.113		& 0.117		& 0.137		& 0.129 	& 0.135			\\
-False negative		& 0.118		& 0.132		& 0.14		& 0.143 	& 0.148			\\ \hline \\ \hline
-\# of random genes	& 2000	 	& 4000		& 6000		& 8000		& 10000 	\\ \hline
-Train accuracy		& 1			& 1			& 1			& 1			& 1				\\ 
-Test accuracy		& 0.803		& 0.811 	& 0.814		& 0.826 	& 0.817			\\ 
-Sensitivity			& 0.804		& 0.812		& 0.812		& 0.829 	& 0.818			\\ 
-Specificity			& 0.806		& 0.815		& 0.82		& 0.824 	& 0.82			\\
-False positive		& 0.196		& 0.188		& 0.188		& 0.171 	& 0.182			\\
-False negative		& 0.194		& 0.185		& 0.18		& 0.176 	& 0.18			\\ \hline
-\end{tabular}
-\end{table}
-
-\begin{table}[ht]
-    \centering
-    \begin{tabular}{c}
-    Supplemental Table Placeholder
-    \end{tabular}
-    \caption{DAVID Functional Enrichment Clustering of common DE genes to (1), (2), and (4).}
-    \label{tab:supp_early_genes_DAVID}
-\end{table}
-
-\begin{table}[ht]
-    \centering
-    \begin{tabular}{c}
-    Supplemental Table Placeholder
-    \end{tabular}
-    \caption{DAVID Functional Enrichment Clustering of DE genes specific to (4).}
-    \label{tab:supp_cau_genes_DAVID}
-\end{table}
-
-\begin{table}[ht]
-    \centering
-    \begin{tabular}{c}
-    Supplemental Table Placeholder
-    \end{tabular}
-    \caption{GSEA results for DE genes in analyses (1), (2), and (4).}
-    \label{tab:supp_de_gsea}
-\end{table}
-
-\begin{table}[ht]
-    \centering
-    \begin{tabular}{c}
-    Supplemental Table Placeholder
-    \end{tabular}
-    \caption{t-test analysis strategy to identify disease specific gene differences between brain regions}
-    \label{tab:supp_ttest}
-\end{table}
-
-\begin{table}[ht]
-    \centering
-    \begin{tabular}{c}
-    Supplemental Table Placeholder
-    \end{tabular}
-    \caption{GSEA of t-test analysis preserving direction of effect. Positive NES gene sets are increased in (3) compared with (5). NES - Normalized enrichment score from GSEA.}
-    \label{tab:supp_ttest_direct_gsea}
-\end{table}
-
-\begin{table}[ht]
-    \centering
-    \begin{tabular}{c}
-    Supplemental Table Placeholder
-    \end{tabular}
-    \caption{GSEA of t-test analysis by size of effect}
-    \label{tab:supp_ttest_effect_gsea}
-\end{table}
-\end{document}
-
-\begin{table}[ht]
-    \centering
-    \begin{tabular}{c}
-    Supplemental File Placeholder
-    \end{tabular}
-    \caption{Heatmaps and graph representations of CAU vs BA9 GSEA results}
-    \label{file:supp_cau_gtex_figures}
-\end{table}
 \end{document}

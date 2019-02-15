@@ -141,11 +141,6 @@
 % article meta data
 %
 \newcommand{\keywords}[1]{\def\@keywords{#1}}
-\newcommand{\projectname}[1]{\def\@projectname{#1}}
-\newcommand{\projectpi}[1]{\def\@projectpi{#1}}
-\newcommand{\labcontact}[1]{\def\@labcontact{#1}}
-\newcommand{\hublead}[1]{\def\@hublead{#1}}
-\newcommand{\projectstartdate}[1]{\def\@projectstartdate{#1}}
 
 \def\xabstract{abstract}
 \long\def\abstract#1\end#2{\def\two{#2}\ifx\two\xabstract 
@@ -165,15 +160,31 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
 {%
 \thispagestyle{empty}%
 \vskip-36pt%
-%
 {\raggedright\sffamily\bfseries\fontsize{20}{25}\selectfont \@title\par}%
 \vskip10pt
-
-{\raggedright\sffamily\fontsize{11}{12}\selectfont 
+{\raggedright\sffamily\fontsize{12}{16}\selectfont  \@author\par}
+\vskip18pt%
+{%
+\noindent
+{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\color{color1}\large\sffamily\textbf{ABSTRACT}}}
+}%
+\vskip10pt
+{%
+\noindent
+\colorbox{color2}{%
+\parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+\sffamily\small\textbf\\\theabstract
 }%
 }%
-}
-
+% \vskip18pt%
+% \noindent
+% \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+% {\color{color1}\keywordname\hspace*{1em}} \@keywords%
+%}%
+}%
+\vskip25pt%
+}%
+}%
 %-----------------------------------------------
 \setlength{\columnsep}{0.55cm} % Distance between the two columns of text 
 \setlength{\fboxrule}{0.75pt} % Width of the border around the abstract
