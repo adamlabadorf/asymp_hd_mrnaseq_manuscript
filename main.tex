@@ -4,12 +4,12 @@
 \usepackage{xcolor}
 \usepackage{enumitem}
 \usepackage[absolute,overlay]{textpos}
-%\usepackage{endfloat}
+\usepackage{endfloat}
 
-\author[1,2,3]{Filisia Agus}
-\author[1,2]{Diego Crespo}
-\author[3]{Richard H. Myers}
-\author[1,3,*]{Adam Labadorf}
+\author[1,2,3]{Filisia Agus $<$fiagus@bu.edu$>$}
+\author[1,2]{Diego Crespo $<$crespodi@bu.edu$>$}
+\author[3]{Richard H. Myers $<$rmyers@bu.edu$>$}
+\author[1,3,*]{Adam Labadorf $<$labadorf@bu.edu$>$}
 \affil[1]{Bioinformatics Hub, Boston University, Boston, 02118, USA}
 \affil[2]{Bioinformatics Program, Boston University, Boston, 02118, USA}
 \affil[3]{Department of Neurology, Boston University School of Medicine, Boston, 02118, USA}
@@ -19,15 +19,20 @@
 \title{The Caudate Nucleus Undergoes Dramatic and Unique Transcriptional Changes in Human Prodromal Huntington's Disease Brain}
 
 \begin{abstract}
+\textbf{Background}
 The mechanisms underlying degeneration of the specific neurons in the striatum of Huntingon's Disease (HD) brain are currently unknown.
 The striatum is massively degenerated in late stage HD, making examination of post-mortem brain tissue from symptomatic individuals problematic.
 Striatal tissue is largely intact in the brains of asymptomatic HD positive (HD+) gene carriers, but these samples are exceedingly rare.
 In this study, caudate nucleus (CAU) tissue from two asymptomatic HD+ individuals was subjected to high throughput mRNA sequencing for comparison with similar datasets from symptomatic HD individuals and healthy controls.
+
+\textbf{Results}
 The overall transcriptional response in HD+ CAU shares much of the same response observed in HD Brodmann Area 9 (BA9) samples, an area relatively spared from significant degeneration.
 A set of differentially expressed (DE) genes related to the heat shock response are found in common between brain regions, and show much higher induction in HD+ CAU than HD BA9.
 The most highly perturbed pathways show near complete agreement when comparing diseased tissue with control, and a random forest classifier predicted that the two HD+ CAU samples strongly resemble HD BA9 and not control BA9.
 Nonetheless, when genes were prioritized by their specificity to HD+ CAU, many pathways spanning many biological processes emerged.
 Comparison of HD+ BA9 with HD BA9 identified genes that may be early responders to disease, and have altered expression in symptomatic individuals.
+
+\textbf{Conclusions}
 This study presents the first examination of asymptomatic brain gene expression to date, and suggests new avenues of investigation into mechanisms underlying neurodegeneration in HD.
 \end{abstract}
 
@@ -38,21 +43,10 @@ This study presents the first examination of asymptomatic brain gene expression 
 
 \thispagestyle{empty}
 
-\hbox{
-\large
-\noindent
-\textbf{Significance Statement}
-}
+\section{Keywords}
+Huntington's Disease, mRNA-Seq, Bioinformatics, Differential Expression, Machine Learning
 
-\noindent
-The caudate nucleus (CAU), the primarily affected brain region in Huntington's Disease (HD), is massively degenerated in late stage human HD brain, making study of the cellular disease process in this tissue problematic.
-The CAU in asymptomatic HD gene positive individuals is still intact, but unfortunately these samples are extremely rare.
-This study reports the first transcriptome-wide analysis of two such CAU samples from asymptomatic HD gene positive individuals.
-Using a combination of bioinformatic and machine learning approaches, we show that the cellular response in the HD CAU is dramatic and involves many different biological pathways.
-The results fit well with much of what is already known about the HD brain, and also suggest many new avenues for investigation.
-
-
-\section{Introduction}
+\section{Background}
 Huntington’s Disease (HD) is a devastating neurodegenerative disease caused by an expanded trinucleotide CAG repeat in the HTT gene.
 The striatum, comprising the caudate nucleus (CAU) and putamen, is the primary affected brain region in HD.
 As many as 90\% of neurons are lost in the striatum, which is massively degenerated in the late stages of the disease.
@@ -567,6 +561,61 @@ The combined complexity of the central nervous and immune systems makes accurate
 Only a few of the many findings in this study have been discussed in this manuscript, and much greater insight may likely be gained from further examination by those specializing in different aspects of the biology implicated here.
 These results are therefore put forward as a source of hypothesis and inspiration for new models and avenues of research.
 
+\section{Conclusion}
+
+These results provide clear evidence that the caudate nucleus is strongly affected by the HD disease process prior to the appearance of any symptoms.
+The common gene expression patterns observed in asymptomatic HD+ CAU compared with symptomatic HD BA9 supports the hypothesis that many aspects of the disease process are shared between brain regions, but that the CAU experiences these changes at a much earlier stage of disease than BA9.
+Of particular importance is the set of heat shock related genes that is commonly perturbed across all HD samples.
+Despite these similarities, a much broader set of gene expression changes is observed specifically in HD+ CAU, implicating unique disease processes that may help explain why this brain region is particularly sensitive to degeneration.
+Several pieces of evidence suggest that neurogenic signals are present in both CAU and BA9, but that the response to these signals differentiates between region.
+The nature and significance of this putative neurogenic signal remains to be shown, and should be investigated further along with the other CAU-specific gene expression patterns found by this study.
+
+\section{Declarations}
+
+\subsection{Abbreviations}
+HD - Huntington's Disease
+CAU - Caudate Nucleus
+BA9 - Brodmann Area 9
+GSEA - Gene Set Enrichment Analysis
+
+\subsection{Ethics approval and consent to participate}
+
+This study has been designated exempt (Protocol # H-28974) by the Boston University School of Medicine Institutional Review Board, as no human subjects were studied and all data are derived from post-mortem human brain specimens.
+
+\subsection{Consent for publication}
+
+Not applicable
+
+\subsection{Availability of data and material}
+
+Raw and processed read data have been deposited into GEO under accessions GSE64810 and GSEXXXXX (upload in progress).
+All analysis and figure code for this project are available at
+
+\href{https://bitbucket.org/bubioinformaticshub/asymptomatic_hd_mrnaseq}{bitbucket.org/bubioinformaticshub/asymptomatic\_hd\_mrnaseq}.
+
+\subsection{Competing interests}
+
+The authors declare no competing interest relevant to this work.
+
+\subsection{Funding}
+
+We would like to thank the Jerry McDonald Huntington Disease Research Fund for supporting this work.
+
+\subsection{Authors' contributions}
+
+FA implemented the primary analyses presented in the text.
+DC prepared and processed the GTEx mRNA-Seq datasets used in other analyses.
+RHM conceived of the study, performed brain dissections and RNA extraction, and provided critical insight into the findings.
+AL designed the analytical approach and directed the overall study.
+
+\subsection{Acknowledgements}
+
+The Genotype-Tissue Expression (GTEx) Project was supported by the Common Fund of the Office of the Director of the National Institutes of Health, and by NCI, NHGRI, NHLBI, NIDA, NIMH, and NINDS.
+The data used for the analyses described in this manuscript were obtained from dbGaP accession number phs000424.v7.p2 on 10/11/2017.
+We acknowledge the help of Ben Draves, Albert Ding, Becky Yu, and Jannie Yu of the BU MSSP statistical consulting service under the guidance of Professor Eric Kolaczyk. 
+Brain illustrations created by Freepik.
+
+
 \section{Methods}
 
 \subsection{Human Subjects}
@@ -725,11 +774,6 @@ All analysis and figure code for this project are available at
 
 \section{Acknowledgements}
 
-We would like to thank the Jerry McDonald Huntington Disease Research Fund for supporting this work.
-The Genotype-Tissue Expression (GTEx) Project was supported by the Common Fund of the Office of the Director of the National Institutes of Health, and by NCI, NHGRI, NHLBI, NIDA, NIMH, and NINDS.
-The data used for the analyses described in this manuscript were obtained from dbGaP accession number phs000424.v7.p2 on 10/11/2017.
-We acknowledge the help of Ben Draves, Albert Ding, Becky Yu, and Jannie Yu of the BU MSSP statistical consulting service under the guidance of Professor Eric Kolaczyk. 
-Brain illustrations created by Freepik.
 
 \bibliography{sample}
 
